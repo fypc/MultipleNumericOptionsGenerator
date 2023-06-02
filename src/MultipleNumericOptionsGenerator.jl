@@ -51,7 +51,7 @@ function needed_decimals(ans, delta)
   return max(tmp_ans, tmp_delta)
 end
 
-function print_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rng = -1)
+function print_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rng = -1, unit = "")
   if rng == -1
     rng = MersenneTwister(rand(Int64));
   end
@@ -62,7 +62,7 @@ function print_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rn
     (options, correct_answer) = generate_random_answers_absolute(ans, tolerance_or_delta, nb_options = nb_options, rng = rng)
   end
   for i in 1:nb_options
-      println((i==correct_answer ? "*" : "") * alphabet[i] * ") " * "$(options[i])")
+      println((i==correct_answer ? "*" : "") * alphabet[i] * ") " * "$(options[i])" * unit)
   end
 end
 
