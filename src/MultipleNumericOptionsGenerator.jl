@@ -31,9 +31,12 @@ end
 
 function generate_random_answers_absolute(ans, delta; nb_options = 5, rng = rng)
   decimals = needed_decimals(ans, delta)
-  range_begin = ans - ((nb_options - 1) * delta)
-  range_end = ans + ((nb_options - 1) * delta)
+  range_begin = round(ans - ((nb_options - 1) * delta), digits = decimals)
+  range_end = round(ans + ((nb_options - 1) * delta), digits = decimals)
   potential_range = collect(range_begin:delta:range_end)
+  println(range_begin)
+  println(range_end)
+  println(potential_range)
   start = rand(rng, 1:nb_options)
   answers = [round_answer(potential_range[i], decimals) for i in start:start+(nb_options - 1)]
   correct_answer = nb_options + 1 - start
