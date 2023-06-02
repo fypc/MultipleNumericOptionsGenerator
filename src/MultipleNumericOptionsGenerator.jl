@@ -1,7 +1,7 @@
 module MultipleNumericOptionsGenerator
 
-import Random
-import Decimals
+using Random
+using Decimals
 
 export print_options
 
