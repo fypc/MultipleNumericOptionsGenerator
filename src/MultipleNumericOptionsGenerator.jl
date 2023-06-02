@@ -46,7 +46,7 @@ function needed_decimals(ans, delta)
   if tmp_delta < 0
     tmp_delta = -tmp_delta
   else
-    return 0
+    tmp_delta = 0
   end
   return max(tmp_ans, tmp_delta)
 end
