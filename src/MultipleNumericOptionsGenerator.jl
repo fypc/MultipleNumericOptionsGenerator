@@ -3,6 +3,8 @@ module MultipleNumericOptionsGenerator
 import Random
 import Decimals
 
+export print_options
+
 function round_answer(ans, digits)
   if digits == 0
     return round(Int, ans)
