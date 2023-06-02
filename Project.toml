@@ -1,0 +1,8 @@
+name = "MultipleNumericOptionsGenerator"
+uuid = "5faa1e40-abe1-46d9-8c76-f918f7ff7d7c"
+authors = ["FYP <61040830+fypc@users.noreply.github.com>"]
+version = "0.1.0"
+
+[deps]
+Decimals = "abce61dc-4473-55a0-ba07-351d65e31d42"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
