@@ -3,7 +3,7 @@ module MultipleNumericOptionsGenerator
 using Random
 using Decimals
 
-export print_options
+export print_options, print_multiple_answers_options
 
 function round_answer(ans, digits)
   if digits == 0
