@@ -51,7 +51,7 @@ function needed_decimals(ans, delta)
   return max(tmp_ans, tmp_delta)
 end
 
-function print_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rng = -1, unit = "", no_valid_anser = "")
+function print_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rng = -1, unit = "", no_valid_answer = "")
   if rng == -1
     rng = MersenneTwister(rand(Int64));
   end
@@ -67,7 +67,24 @@ function print_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rn
   if no_valid_answer != ""
     println("z) " * no_valid_answer)
   end
+end
 
+function print_multiple_answers_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rng = -1, unit = "", no_valid_answer = "")
+  if rng == -1
+    rng = MersenneTwister(rand(Int64));
+  end
+  alphabet = collect('a':'z')
+  if mode == :relative
+    (options, correct_answer) = generate_random_answers_relative(ans, tolerance_or_delta, nb_options = nb_options, rng = rng)
+  else
+    (options, correct_answer) = generate_random_answers_absolute(ans, tolerance_or_delta, nb_options = nb_options, rng = rng)
+  end
+  for i in 1:nb_options
+      println((i==correct_answer ? "[*] " : "[ ] ") * "$(options[i])" * unit)
+  end
+  if no_valid_answer != ""
+    println("z) " * no_valid_answer)
+  end
 end
 
 function print_invalid_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rng = -1, unit = "")
