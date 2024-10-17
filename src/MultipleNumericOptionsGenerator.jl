@@ -4,6 +4,7 @@ using Random
 using Decimals
 
 export print_options
+export print_cloze_options
 
 function round_answer(ans, digits)
   if digits == 0
@@ -67,7 +68,6 @@ function print_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rn
   if no_valid_answer != ""
     println("z) " * no_valid_answer)
   end
-
 end
 
 function print_invalid_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rng = -1, unit = "")
@@ -89,4 +89,28 @@ function count_decimals(x)
   return -Decimal(x).q
 end
 
+function print_cloze_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rng = -1, unit = "", no_valid_anser = "")
+  if rng == -1
+    rng = MersenneTwister(rand(Int64));
+  end
+  alphabet = collect('a':'z')
+  if mode == :relative
+    (options, correct_answer) = generate_random_answers_relative(ans, tolerance_or_delta, nb_options = nb_options, rng = rng)
+  else
+    (options, correct_answer) = generate_random_answers_absolute(ans, tolerance_or_delta, nb_options = nb_options, rng = rng)
+  end
+  str = "{1:MULTICHOICE_VS:="
+  for i in 1:nb_options
+      str *= "$(options[i])" * unit *"~"
+  end
+  
+  if no_valid_answer != ""
+    str *= no_valid_answer
+  end
+  str *= "}"
+end
+
+
 end # module MultipleNumericOptionsGenerator
+
+#{1:MULTICHOICE_VS:=6.01%~5.91%~6.11%~6.21%~6.31%~6.41%}
