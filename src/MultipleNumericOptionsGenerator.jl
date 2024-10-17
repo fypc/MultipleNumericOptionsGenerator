@@ -101,7 +101,10 @@ function print_cloze_options(ans, tolerance_or_delta, nb_options; mode = :absolu
   end
   str = "{1:MULTICHOICE_VS:="
   for i in 1:nb_options
-      str *= "$(options[i])" * unit *"~"
+    if i > 1
+      str *= "~"
+    end
+    str *= "$(options[i])" * unit
   end
   
   if no_valid_answer != ""
