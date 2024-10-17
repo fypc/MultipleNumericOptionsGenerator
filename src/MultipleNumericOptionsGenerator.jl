@@ -52,7 +52,7 @@ function needed_decimals(ans, delta)
   return max(tmp_ans, tmp_delta)
 end
 
-function print_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rng = -1, unit = "", no_valid_anser = "")
+function print_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rng = -1, unit = "", no_valid_answer = "")
   if rng == -1
     rng = MersenneTwister(rand(Int64));
   end
@@ -89,7 +89,7 @@ function count_decimals(x)
   return -Decimal(x).q
 end
 
-function print_cloze_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rng = -1, unit = "", no_valid_anser = "")
+function print_cloze_options(ans, tolerance_or_delta, nb_options; mode = :absolute, rng = -1, unit = "", no_valid_answer = "")
   if rng == -1
     rng = MersenneTwister(rand(Int64));
   end
