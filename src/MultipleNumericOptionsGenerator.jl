@@ -99,7 +99,7 @@ function print_cloze_options(ans, tolerance_or_delta, nb_options; mode = :absolu
   else
     (options, correct_answer) = generate_random_answers_absolute(ans, tolerance_or_delta, nb_options = nb_options, rng = rng)
   end
-  str = "{1:MULTICHOICE_VS:="
+  str = "{1:MULTICHOICE_VS:"
   for i in 1:nb_options
     if i > 1
       str *= "~"
