@@ -104,6 +104,9 @@ function print_cloze_options(ans, tolerance_or_delta, nb_options; mode = :absolu
     if i > 1
       str *= "~"
     end
+    if i==correct_answer
+      str *= "="
+    end
     str *= "$(options[i])" * unit
   end
   
